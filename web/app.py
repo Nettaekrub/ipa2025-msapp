@@ -4,10 +4,16 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from pymongo import MongoClient
+from bson import ObjectId
+import os
 
 app = Flask(__name__)
-client = MongoClient("mongodb://mongo:27017/")
-db = client["mydb"]                             
+
+mongo_uri  = os.environ.get("MONGO_URI")
+db_name    = os.environ.get("DB_NAME")
+
+client = MongoClient(mongo_uri)
+db = client[db_name]                             
 routers = db["routers"]
 
 @app.route("/")
