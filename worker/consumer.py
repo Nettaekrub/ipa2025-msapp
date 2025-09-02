@@ -1,11 +1,10 @@
 import os, time, pika
 
+from callback import callback
+
 user = os.getenv("RABBITMQ_DEFAULT_USER")
 pwd  = os.getenv("RABBITMQ_DEFAULT_PASS")
 
-def callback(ch, method, props, body):
-    print(f"body: {body.decode()}")
-    time.sleep(3)
 
 def consume(host):
     for attempt in range(10):

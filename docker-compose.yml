@@ -39,6 +39,20 @@ services:
       - app-net
     env_file:
       - .env
+  
+  worker:
+    build: ./worker
+    depends_on:
+      - mongo
+      - rabbitmq
+      - scheduler
+    networks:
+      - app-net
+    env_file:
+      - .env
+    environment:
+      MONGO_URI: "mongodb://mongo:27017/"
+      DB_NAME: "mydb"
 
 
 volumes:

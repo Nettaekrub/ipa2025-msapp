@@ -15,6 +15,8 @@ db_name    = os.environ.get("DB_NAME")
 client = MongoClient(mongo_uri)
 db = client[db_name]                             
 routers = db["routers"]
+interface_status = db["interface_status"]
+
 
 @app.route("/")
 def main():
@@ -39,6 +41,16 @@ def delete_info():
         router = data[idx]
         routers.delete_one(router)
     return redirect(url_for("main"))
+
+@app.route("/router/<ip>", methods=["GET"])
+def router_detail(ip):
+    docs = db.interface_status.find({"router_ip": ip}).sort("timestamp", -1).limit(3)
+
+    return render_template(
+        "router_detail.html",
+        router_ip=ip,
+        interface_data=docs,
+    )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
