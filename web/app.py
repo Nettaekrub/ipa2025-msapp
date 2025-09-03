@@ -30,11 +30,11 @@ def add_info():
     password = request.form.get("password")
 
     if ip_address and username and password:
-        routers.insert_one(
-            {"ip_address": ip_address,
+        routers.insert_one({
+            "ip_address": ip_address,
             "username": username,
-            "password": password}
-        )
+            "password": password
+        })
     return redirect(url_for("main"))
 
 
