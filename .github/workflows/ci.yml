@@ -40,10 +40,10 @@ jobs:
 
     - name: Build & Push Docker Images
       run: |
-        docker build -t Nettaekrub/worker:latest ./worker
-        docker build -t Nettaekrub/scheduler:latest ./scheduler
-        docker build -t Nettaekrub/web:latest ./web
+        docker build -t Nettaekrub/ipa2025-msapp-worker:latest ./worker
+        docker build -t Nettaekrub/ipa2025-msapp-scheduler:latest ./scheduler
+        docker build -t Nettaekrub/ipa2025-msapp-web:latest ./web
 
-        docker push Nettaekrub/worker:latest
-        docker push Nettaekrub/scheduler:latest
-        docker push Nettaekrub/web:latest
+        docker push Nettaekrub/ipa2025-msapp-worker:latest
+        docker push Nettaekrub/ipa2025-msapp-scheduler:latest
+        docker push Nettaekrub/ipa2025-msapp-web:latest
