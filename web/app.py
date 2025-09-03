@@ -30,11 +30,9 @@ def add_info():
     password = request.form.get("password")
 
     if ip_address and username and password:
-        routers.insert_one({
-            "ip_address": ip_address,
-            "username": username,
-            "password": password
-        })
+        routers.insert_one(
+            {"ip_address": ip_address, "username": username, "password": password}
+        )
     return redirect(url_for("main"))
 
 
@@ -50,9 +48,7 @@ def delete_info():
 
 @app.route("/router/<ip>", methods=["GET"])
 def router_detail(ip):
-    docs = db.interface_status.find(
-        {"router_ip": ip}
-    ).sort("timestamp", -1).limit(3)
+    docs = db.interface_status.find({"router_ip": ip}).sort("timestamp", -1).limit(3)
 
     return render_template(
         "router_detail.html",
