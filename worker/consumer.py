@@ -4,8 +4,8 @@ import time
 
 from callback import callback
 
-user = os.getenv("RABBITMQ_DEFAULT_USER", "admin")
-pwd = os.getenv("RABBITMQ_DEFAULT_PASS", "rabbitmq")
+user = os.getenv("RABBITMQ_DEFAULT_USER")
+pwd = os.getenv("RABBITMQ_DEFAULT_PASS")
 
 
 def consume(host):

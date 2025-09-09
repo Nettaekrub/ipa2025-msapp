@@ -29,8 +29,6 @@ services:
       - app-net
     env_file:
       - .env
-    environtment:
-      RABBITMQ_DEPRECATED_FEATURES_PERMIT_TRANSIENT_NONEXCL_QUEUES: "true"
 
   scheduler:
     build: ./scheduler
