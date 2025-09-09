@@ -1,3 +1,3 @@
 from consumer import consume
 
-consume("rabbitmq")
+consume("ipa2025-msapp-rabbitmq-1")
