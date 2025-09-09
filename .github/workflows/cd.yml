@@ -1,4 +1,3 @@
-#please
 on:
   workflow_run:
     workflows: ["CI Pipeline"]
