@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ipa2025-msapp-web
+  name: ipa2025-msapp-worker
   namespace: ipa2025
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: ipa2025-msapp-web
+      app: ipa2025-msapp-worker
   template:
     metadata:
       labels:
-        app: ipa2025-msapp-web
+        app: ipa2025-msapp-worker
     spec:
       containers:
-        - name: ipa2025-msapp-web
-          image: nettae4docker/web:latest
+        - name: ipa2025-msapp-worker
+          image: nettae4docker/worker:latest
           ports:
             - containerPort: 8080
           envFrom:
